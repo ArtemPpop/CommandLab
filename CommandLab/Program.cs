@@ -1,28 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-
-class Program
+﻿
+Calculator calc = new Calculator();
+SimplePanel panel = new SimplePanel(calc);
+panel.SetupCustomButtons();
+panel.ShowHelp();
+while (true)
 {
-    static void Main()
-    {
-        Calculator calc = new Calculator();
-        SimplePanel panel = new SimplePanel(calc);
-        panel.SetupCustomButtons();
-        panel.ShowHelp();
-        while (true)
-        {
-            Console.Write("\n> ");
-            string input = Console.ReadLine();
+  Console.Write("\n> ");
+  string input = Console.ReadLine();
 
-            if (input.ToLower() == "выход" || input.ToLower() == "exit")
-            {
-                Console.WriteLine("Выход из калькулятора");
-                break;
-            }
+     if (input.ToLower() == "выход" || input.ToLower() == "exit")
+     {
+       Console.WriteLine("Выход из калькулятора");
+       break;
+     }
 
-            panel.ProcessInput(input);
-        }
-    }
+    panel.ProcessInput(input);
 }
 public class Calculator
 {
@@ -116,10 +108,8 @@ public class Calculator
             _awaitingNewNumber = true;
         }
     }
-
     public bool IsEnteringNumber => _isEnteringNumber;
 }
-
 public class SimplePanel
 {
     private readonly Calculator _calc;
